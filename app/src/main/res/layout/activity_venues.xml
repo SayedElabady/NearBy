@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.abadyyy.side_project.nearby.features.ventures.VenuesListViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".features.ventures.VenuesListActivity">
+
+        <ToggleButton
+            android:id="@+id/mode_switch"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:gravity="center"
+            android:textOff="@string/single_update_keyword"
+            android:textOn="@string/real_time_keyword"
+            android:thumbTextPadding="@dimen/horizontal_margin"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/venues_rv"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:visibility="@{ viewModel.isVenuesEmpty() == true? View.GONE : View.VISIBLE, default =visible}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/mode_switch" />
+
+        <TextView
+            android:id="@+id/empty_venues_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableTop="@drawable/ic_error_black_24dp"
+            android:text="@string/empty_venues_message"
+            android:visibility="@{ viewModel.isVenuesEmpty() == true? View.VISIBLE : View.GONE, default =gone}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <include
+            layout="@layout/component_overlays"
+            app:viewModel="@{ viewModel }" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

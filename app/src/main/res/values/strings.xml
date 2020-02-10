@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">NearBy</string>
+    <string name="server_error_msg">OOOPS, Something Went wrong, we couldn\'t connect to the server</string>
+    <string name="network_error_text">We couldn\'t find Internet Connection, Please enable it for one time at least to load data</string>
+    <string name="single_update_keyword">Single Update</string>
+    <string name="real_time_keyword">Real Time</string>
+    <string name="empty_venues_message">No Data Found!</string>
+
+</resources>
